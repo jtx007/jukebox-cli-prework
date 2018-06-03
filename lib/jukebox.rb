@@ -29,13 +29,15 @@ def list(songs_array)
 end
 
 def play(songs_array)
-  puts "Please enter asong name or number"
+  puts "Please enter a song name or number"
   answer = gets.chomp
   songs_array.each_with_index do |song, index|
     if answer == song 
       puts "Playing #{song}"
+      break
     elsif answer.to_i == index + 1
       puts "Playing #{songs_array[index]}"
+      break
     else
       puts "Invalid input, please try again"
     end
@@ -51,8 +53,9 @@ def run(songs)
   command = "Please enter a command:"
   puts command
   answer = gets.chomp
-  if answer = "exit"
+  if answer == "exit"
     exit_jukebox
+    binding.pry
   end
      while answer != "exit"
       puts command
